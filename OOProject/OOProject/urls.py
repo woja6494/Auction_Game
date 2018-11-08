@@ -18,5 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('game.urls')), #which route goes to our blog url, this maps /blog address to our blog.urrls file -> which calls views.home
+    path('', include('game.urls')),
+    # which route goes to our blog url,
+    # this maps /blog address to our blog.urls file -> which calls views.home
 ]
