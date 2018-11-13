@@ -1,4 +1,4 @@
-from game import user
+from .user import *
 
 
 
@@ -9,16 +9,18 @@ class PlayerHome:
     curr_item_num = 0
     curr_animal_num = 0
     curr_background = 0
+    user = User.getInstance()
+
     def placeItem(self,item):
-        if self.curr_item_num < self.max_item and user.getOwnItem(item):
+        if self.curr_item_num < self.max_item and self.user.getOwnItem(item):
             #place it
 
     def placeBackground(self, background):
-        if user.getOwnBackground(background):
+        if self.user.getOwnBackground(background):
             self.curr_background = background
 
     def placeAnimal(self,animal):
-        if self.curr_animal_num < self.max_item and user.getOwnAnima(animal):
+        if self.curr_animal_num < self.max_item and self.user.getOwnAnima(animal):
             #place it somehow
 
 
