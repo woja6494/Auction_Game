@@ -1,0 +1,8 @@
+<style>
+.tdStyle
+{
+background-image:url({% static "images/711095.png"%})
+background-repeat:no-repeat;
+background-size:100%;
+}
+</style>

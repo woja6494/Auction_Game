@@ -1,0 +1,75 @@
+{% load static %}
+<html>
+<title>Main Screen</title>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<style>
+body  {
+    background-image: url({% static "images/bg.jpg" %});
+    background-position: center top; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+</style>
+    <style>
+    .button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position:absolute;
+    transition: .5s ease;
+    left: 650px;
+    top: 300px;
+    }
+    </style>
+    <style>
+    .loadbutton {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position:absolute;
+    transition: .5s ease;
+    left: 640px;
+    top: 400px;
+    }
+    </style>
+    <style>
+    .title{
+    position: relative;
+    top: 100px;
+
+    }
+    </style>
+</head>
+<body>
+<div class="title">
+    <center><font size="8">Auction Game</font></center>
+</div>
+
+<form action="" method="post">
+    <div class="button">
+        <a name="start" href="{% url 'game-home' %}"><img src='{% static "images/start1.png" %}'  height="150" width="300"/></a>
+    </div>
+</form>
+<div class="loadbutton">
+    <a href="{% url 'game-load' %}"><img src='{% static "images/load1.png" %}'  height="130" width="325"/></a>
+</div>
+</body>
+</html>

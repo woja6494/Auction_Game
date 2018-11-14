@@ -1,5 +1,4 @@
 {% load static %}
-<% from .Main_Screen import * %>
 <html>
 <title>Main Screen</title>
 <head>
@@ -70,7 +69,6 @@ body  {
 
 <div class="loadbutton">
     <a href="{% url 'game-load' %}"><img src='{% static "images/load1.png" %}'  height="130" width="325"/></a>
-    <% user = Main_Screen.newGame() %>
 </div>
 </body>
 </html>

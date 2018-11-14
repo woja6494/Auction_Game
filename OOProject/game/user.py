@@ -4,12 +4,12 @@ from django.views import generic
 
 class User:
     gold = 0
-    goldIncrease = True
+    goldIncrease = False
     ownAnimals = []
     ownItems = []
     ownBackground = []
     instance = None
-    if goldIncrease:
+    while goldIncrease:
         gold += 1
         time.sleep(1)
 
