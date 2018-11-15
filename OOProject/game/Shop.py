@@ -1,5 +1,6 @@
 from .user import *
-
+from .Item import *
+from .Background import *
 
 class Shop:
 

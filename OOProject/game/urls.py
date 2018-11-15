@@ -4,7 +4,7 @@ from . import views    # . refers current directory.
 
 urlpatterns = [
 
-    path('', views.main, name = 'game-main'),
+    path('', views.main, name='game-main'),
     # leave '' for homepage
     #  views.home navigates to views.py file and find home def.
     path('about/', views.about, name = 'game-about'),

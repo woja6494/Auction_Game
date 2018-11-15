@@ -1,4 +1,5 @@
 {% load static %}
+{% load user %}
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +21,7 @@ text-decoration: none;
 font-size: 16px;
 margin: 4px 2px;
 position:absolute;
-left: 1060px;
+left: 1560px;
 top: 0px;
 }
 </style>
@@ -31,7 +32,7 @@ text-decoration: none;
 font-size: 16px;
 margin: 4px 2px;
 position:absolute;
-left: 1000px;
+left: 1500px;
 top: 0px;
 }
 </style>
@@ -42,7 +43,7 @@ text-decoration: none;
 font-size: 16px;
 margin: 4px 2px;
 position:absolute;
-left: 1055px;
+left: 1555px;
 top: 55px;
 }
 </style>
@@ -53,16 +54,32 @@ text-decoration: none;
 font-size: 16px;
 margin: 4px 2px;
 position:absolute;
-left: 1000px;
+left: 1500px;
 top: 60px;
 }
+
 </style>
+
+<!--function update_coins() {-->
+    <!--$.ajax({-->
+      <!--method: "POST",-->
+      <!--url: "/coins",-->
+      <!--data: {},-->
+      <!--success: function(data) {-->
+        <!--console.log(data) // check out how data is structured-->
+
+        <!--// Update the coin amount-->
+        <!--$('.status').contents()[0].textContent = 'Balance&nbsp'+data.coins-->
+      <!--}-->
+    <!--})-->
+  <!--};-->
+
 <body>
-<p>{{gold}}</p>
+Gold: {{gold}}
+instance: {{instance}}
 <div class="auction" >
     <a href="{% url 'game-auction' %}"><img src='{% static "images/auction.png" %}'  height="50" width="50"/> </a>
 </div>
-
 <div class="inventory">
     <a href="{% url 'game-inventory' %}"><img src='{% static "images/inventory.png" %}'  height="50" width="50"/> </a>
 </div>
@@ -74,3 +91,4 @@ top: 60px;
     <a href="{% url 'game-shop' %}"><img src='{% static "images/cart.png" %}'  height="50" width="50"/> </a>
 </div>
 </body>
+<html>

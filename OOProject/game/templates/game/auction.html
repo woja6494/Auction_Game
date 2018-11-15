@@ -1,11 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<h1>Auction Page</h1>
+<style>
+body  {
+    background-image: url({% static "images/auction_bg.png" %}) ,linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0))  ;
+    background-position: center top; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 
+}
+</style>
+<style>
+div {
+    position:absolute;
+    left: 100px;
+    top: 150px;
+    border: 25px solid green;
+    <!--padding-top: 250px;-->
+    <!--padding-right: 100px;-->
+    <!--padding-left: 200px;-->
+    font-size: 40px;
+    text-align: center;
+
+}
+</style>
+
+<body>
+<div>
+    <img src='{% static "images/bg2.jpg" %}'  height="200" width="200"/> <br>
+    <font size = "6">Name: </font><br>
+    <font size = "6">PRICE: </font>    <br>
+    <font size = "6">LEAD: </font> <br>
+    <font size = "6"># Participants  </font><br>
+    <font size = "6">BID: </font>  <br>
+</div>
+<div style="left: 675px;"> same</div>
+<div style="left: 1200px;"> same</div>
+<h1>Auction Page</h1>
 </body>
+
+
+
 </html>

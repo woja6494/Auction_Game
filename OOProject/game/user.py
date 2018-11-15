@@ -1,23 +1,26 @@
 import time
 from django.views import generic
+from django import template
 
+register = template.Library()
 
 class User:
-    gold = 0
-    goldIncrease = False
+    gold = 10000
+    goldIncrease = True
     ownAnimals = []
     ownItems = []
     ownBackground = []
     instance = None
-    while goldIncrease:
-        gold += 1
-        time.sleep(1)
-
+    temp = "striiiiing"
+    # if goldIncrease:
+    #     gold += 1
+    #     time.sleep(1)
 
     @staticmethod
     def get_instance():
         if User.instance is None:
             User()
+            print("User instance created")
         return User.instance
 
     def __init__(self):
@@ -44,4 +47,9 @@ class User:
             return True
         else:
             return False
+
+    def update_gold(self):
+        self.gold += 100
+        return self.gold
+
 

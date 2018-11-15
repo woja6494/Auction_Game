@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,10 @@
 </head>
 <body>
 <h1>Shop Page</h1>
-
+{% for item in items %}
+    <p>{{item.itemName}}</p>
+    <p>{{item.itemType}}</p>
+    <p>{{item.price}}</p>
+{% endfor %}
 </body>
 </html>

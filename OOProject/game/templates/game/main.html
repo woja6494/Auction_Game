@@ -29,7 +29,7 @@ body  {
     cursor: pointer;
     position:absolute;
     transition: .5s ease;
-    left: 400px;
+    left: 650px;
     top: 300px;
     }
     </style>
@@ -46,7 +46,7 @@ body  {
     cursor: pointer;
     position:absolute;
     transition: .5s ease;
-    left: 390px;
+    left: 640px;
     top: 400px;
     }
     </style>
@@ -63,10 +63,11 @@ body  {
     <center><font size="8">Auction Game</font></center>
 </div>
 
-<div class="button">
-    <a href="{% url 'game-home' %}"><img src='{% static "images/start1.png" %}'  height="150" width="300"/></a>
-</div>
-
+<form action="" method="post">
+    <div class="button">
+        <a name="start" href="{% url 'game-home' %}"><img src='{% static "images/start1.png" %}'  height="150" width="300"/></a>
+    </div>
+</form>
 <div class="loadbutton">
     <a href="{% url 'game-load' %}"><img src='{% static "images/load1.png" %}'  height="130" width="325"/></a>
 </div>

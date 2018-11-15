@@ -1,10 +1,11 @@
-
+from threading import Timer
 
 
 class Auction:
 
 
-    auction_number = 0
+    max_auction_number = 3
+    currAuctionNumber = 0
     auctionPrice = 0
     AIList = []
     time = 0
@@ -17,8 +18,8 @@ class Auction:
     def bid(self, AIList): #AI bidding
 
 
-    def winAuction(self, currentPrice):
-        if self.bid_player > currentPrice:
-            #player won
 
+
+    def create_auction(self):
+        if self.currAuctionNumber < self.max_auction_number:
 

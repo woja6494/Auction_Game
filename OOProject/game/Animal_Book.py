@@ -1,15 +1,20 @@
-
-
+from .Animal import *
 
 
 class AnimalBook:
 
-    AnimalList = []
-    Listunlock = []
+    animalList = {}
+    animalarray = []
+    #Listunlock = []
 
-    for i in range(AnimalList):
-        if AnimalList[i] in Listunlock:
-            # display unlocked
+    animalList.update({"cat": Animal(1, "", 500)})
+    animalList.update({"macaque": Animal(2, "", 500)})
+    animalList.update({"corgi": Animal(3, "", 500)})
+    animalList.update({"chihuahua": Animal(3, "", 500)})
+    animalList.update({"squirrel": Animal(3, "", 500)})
+    animalList.update({"whitehorse": Animal(3, "", 500)})
 
-        else:
-            #locked
+    for key, value in animalList.items():
+        animalarray.append({
+            'animalName': key,
+        })

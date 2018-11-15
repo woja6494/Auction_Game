@@ -1,7 +1,19 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.http import HttpRequest
 from .models import *
 from .user import *
+from .ItemSet import *
+from .Main_Screen import *
+from .Animal_Book import *
+
+user = User()
+itemset = ItemSet
+
 def main(request):  # handle traffic of blog
+    # if request.method == 'POST':
+    #     #start = request.POST['start']
+    #return HttpResponse(request, render(request, 'game/main.html', {'title': 'Main'}))
     return render(request, 'game/main.html', {'title': 'Main'})
     # request, template name what want to render,
     # third passes into template and access it on template
@@ -12,7 +24,13 @@ def about(request):
 
 
 def home(request):
-    return render(request, 'game/home.html' )
+    user.update_gold()
+    print("hello")
+    context = {
+        'gold': user.gold,
+        'instance' : user.instance,
+    }
+    return render(request, 'game/home.html', context)
 
 
 def auction(request):
@@ -20,7 +38,9 @@ def auction(request):
 
 
 def book(request):
-    return render(request, 'game/book.html', {'title': 'book'})
+    ab = AnimalBook
+    animals = {'animals': ab.animalarray}
+    return render(request, 'game/book.html', animals)
 
 
 def inventory(request):
@@ -28,7 +48,10 @@ def inventory(request):
 
 
 def shop(request):
-    return render(request, 'game/shop.html', {'title': 'shop'})
+
+    everything = {'items' : itemset.itemarray}
+
+    return render(request, 'game/shop.html', everything)
 
 
 def load(request):

@@ -1,11 +1,52 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+body  {
+    background-image: url({% static "images/book_bg.jpg" %});
+    background-position: center top; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+}
+</style>
+<style>
+div {
+    position:absolute;
+    left: 200px;
+    top: 150px;
+    border: 25px solid green;
+    <!--padding-top: 100px;-->
+    <!--padding-right: 100px;-->
+    <!--padding-left: 100px;-->
+    font-size: 40px;
+    text-align: center;
+
+}
+</style>
 <body>
+
 <h1>Inventory Page</h1>
+<div>
+    <a href="{% url 'game-auction' %}"><img src='{% static "images/bg2.jpg" %}'  height="200" width="200"/> </a>
+</div>
+<div style="left: 700px;">
+ <a href="{% url 'game-auction' %}"><img src='{% static "images/chair1.jpg" %}'  height="200" width="200"/> </a>
+</div>
+<div style="left: 1200px;">
+ <a href="{% url 'game-auction' %}"><img src='{% static "images/sofa1.jpg" %}'  height="200" width="200"/> </a>
+</div>
+<div style="left: 200px; top: 450px">
+ <a href="{% url 'game-auction' %}"><img src='{% static "images/bg1.jpg" %}'  height="200" width="200"/> </a>
+</div>
+
+
 
 </body>
 </html>
