@@ -11,6 +11,18 @@
 
 <title>Title</title>
 </head>
+<style>
+body  {
+    background-image: url({% static "images/bgshop.jpg" %}) ,linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0))  ;
+    background-position: center top; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+}
+</style>
 <body>
 
 <h1>Shop Page</h1>
@@ -56,7 +68,7 @@
               <div class="modal-footer">
                 <form action="/inventory/" method = "POST">
                     {% csrf_token %}
-                    <button id="yesbutton" type="submit" class="btn btn-primary" value="{{background.itemID}}" name="itemname">Yes</button>
+                    <button id="yesbutton" type="submit" class="btn btn-primary" value="{{background.bgID}}" name="bgname">Yes</button>
                 </form>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-bottom: 16px">No</button>
               </div>

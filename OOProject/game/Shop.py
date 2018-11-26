@@ -20,16 +20,13 @@ class Shop:
             print("ITEM ADDED")
 
 
-    def buyBackground(self,background):
-        background.get_Background_Price()
-        if self.user.gold > background.price:
-            self.user.gold - background.price
+    def buyBackground(self,bgID):
+        index = bgID -1
+        price = BackgroundSet.backgroundarray[index]['price']
+        if self.user.gold > price:
+            self.user.gold = self.user.gold - price
             print("usergold")
             print(self.user.gold)
-            self.user.ownBackground.append(background)
+            self.user.ownBackground.append(BackgroundSet.backgroundarray[index])
+            print("BG ADDED")
 
-    def addItem(self,item):
-        user.ownItems.append(item)
-
-    def addBackground(self,background):
-        user.ownBackground.append(background)

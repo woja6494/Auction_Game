@@ -33,13 +33,13 @@ class BackgroundSet:
 
 #self,bg_id, islot_num, aslot_num, price, itemSlots, animalSlots
     backgroundList.update({"bg1": BackGround(1,1,1,2000,[(404,404)],[(123,508)],"/static/images/bg1.jpg")})
-    backgroundList.update({"bg2": BackGround(1,1,1,2000,[(404,404)],[(123,508)],"/static/images/bg2.jpg")})
+    backgroundList.update({"bg2": BackGround(2,1,1,2000,[(404,404)],[(123,508)],"/static/images/bg2.jpg")})
 
 
     for key, value in backgroundList.items():
-        i = 0
         backgroundarray.append({
             'bgName': key,
+            'bgID' : value.backgroundID,
             'price' : value.price,
             'url': value.url,
 

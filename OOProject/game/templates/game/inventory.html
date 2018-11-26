@@ -26,11 +26,22 @@ body  {
 <h1>Inventory Page</h1>
 <div>
   {% for item in items %}
-         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal-{{item.itemName}}"><img src= "{{item.url}}" height="200" width="200"/> </button>
+         <button type="button"><img src= "{{item.url}}" height="200" width="200"/> </button>
 
     {% endfor %}
 </div>
+<div>
+  {% for bg in bgs %}
+         <button type="button"><img src= "{{bg.url}}" height="200" width="200"/> </button>
 
+    {% endfor %}
+</div>
+<div>
+  {% for animal in animals %}
+         <button type="button"><img src= "{{animal.url}}" height="200" width="200"/> </button>
+
+    {% endfor %}
+</div>
 <div class="cart" style="position:absolute;left: 1600px;top: 50px;">
     <a href="{% url 'game-home' %}"><img src='{% static "images/home.png" %}'  height="50" width="50"/> </a>
 </div>

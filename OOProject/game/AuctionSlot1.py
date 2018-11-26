@@ -1,6 +1,6 @@
 from threading import Timer
 from .Auction import *
-
+from .user import *
 class AuctionSlot1:
 
     auctionID = 0
@@ -11,7 +11,7 @@ class AuctionSlot1:
     isOpen = False
     animal = Animal(0,"empty desc",0,"")
     instance = None
-
+    user = User.get_instance()
     @staticmethod
     def get_instance():
         if AuctionSlot1.instance is None:
@@ -50,6 +50,8 @@ class AuctionSlot1:
     #         #nothing happen
     def player_won(self):
         if self.total > self.AI_total:
+            print(self.total)
+            self.user.gold = self.user.gold -self.total
             return True
         else:
             return False

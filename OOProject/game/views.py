@@ -69,19 +69,29 @@ def book(request):
 def inventory(request):
     if request.method == "POST":
         print("HELLO!!")
-        #my_var = dict.get( key , default )
-        #amount = request.POST['animalname']
-        item = int(request.POST.get("itemname"))
-        for i in range (0, len(itemset.itemarray)):
-            #print(itemset.itemarray[i]['itemID'])
-            if itemset.itemarray[i]['itemID'] == item:
-                shop1.buyItem(item)
+        if request.POST.get("itemname") is not None:
+            item = int(request.POST.get("itemname"))
+            print(item)
 
-        print(item)
+            for i in range (0, len(itemset.itemarray)):
+                #print(itemset.itemarray[i]['itemID'])
+                if itemset.itemarray[i]['itemID'] == item:
+                    shop1.buyItem(item)
+        elif request.POST.get("bgname") is not None:
+            bg = int(request.POST.get("bgname"))
+            #print("background")
+            #print(bg)
+            for i in range(0, len(backgroundSet.backgroundarray)):
+                #print("bgID")
+                #print(backgroundSet.backgroundarray[i]['bgID'])
+                if backgroundSet.backgroundarray[i]['bgID'] == bg:
+                    shop1.buyBackground(bg)
     userItems ={
         # 'itemName' : user.ownItems['itemName'],
         # 'url': user.ownItems['url'],
-        'items' : user.ownItems
+        'items' : user.ownItems,
+        'bgs' : user.ownBackground,
+        'animals' : user.ownAnimals,
     }
     return render(request, 'game/inventory.html', userItems)
 
@@ -94,10 +104,11 @@ def shop(request):
     return render(request, 'game/shop.html', everything)
 
 
-def result(request):
+def result(request): #from auction end
     print("result!")
     a1 =AuctionSlot1.get_instance()
     if a1.player_won():
+        print("Player won!")
         user.ownAnimals.append(a1.animal)
     #a1.auction_close()
     auction = {
@@ -105,7 +116,6 @@ def result(request):
         'auction1': a1,
         'auction2': AuctionSlot2.animal,
         'auction3': AuctionSlot3.animal,
-        'a1_result' : a1.player_won(),
 
     }
     return render(request,'game/auction.html',)
