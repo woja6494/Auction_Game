@@ -1,23 +1,35 @@
 from .user import *
 from .Item import *
-from .Background import *
+from .BackgroundSet import *
+from .ItemSet import *
 
 class Shop:
 
-    itemList = []
-    backgroundList = []
-    user = User.getInstance()
+    itemList = ItemSet.itemList
+    backgroundList = BackgroundSet.backgroundList
+    user = User.get_instance()
 
 
-    def buyItem(self,item):
-        item.get_Item_Pricie()
-        if self.user.gold > item.price: #user gold > item price
-            self.user.gold - item.price
-            self.user.ownItems.append(item)
+    def buyItem(self,itemID):
+        price = ItemSet.itemarray[itemID-1]['price']
+        if self.user.gold > price: #user gold > item price
+            self.user.gold = self.user.gold - price
+            print("usergold")
+            print(self.user.gold)
+            self.user.ownItems.append(ItemSet.itemarray[itemID-1])
+            print("ITEM ADDED")
 
 
     def buyBackground(self,background):
         background.get_Background_Price()
         if self.user.gold > background.price:
             self.user.gold - background.price
+            print("usergold")
+            print(self.user.gold)
             self.user.ownBackground.append(background)
+
+    def addItem(self,item):
+        user.ownItems.append(item)
+
+    def addBackground(self,background):
+        user.ownBackground.append(background)

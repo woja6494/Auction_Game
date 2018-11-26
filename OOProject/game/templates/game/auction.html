@@ -3,7 +3,57 @@
 <html>
 <head>
     <meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <title>Title</title>
+<script>
+    // Set the date we're counting down to
+    var distance = 5;
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+      // Time calculations for days, hours, minutes and seconds
+      var minutes = Math.floor((distance % (60 * 60)) / (60));
+      var seconds = Math.floor((distance % (60)));
+
+      // Display the result in the element with id="demo"
+      document.getElementById("demo").innerHTML =minutes + "m " + seconds + "s ";
+
+      // If the count down is finished, write some text
+      if (distance < 1) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "AUCTION IS OVER";
+        $(function(){
+        $("#a1").fadeOut(1000);
+        });
+      $.ajax({
+        type: 'POST',
+        url: '/result/',
+        data: {    csrfmiddlewaretoken: '{{ csrf_token }}'},
+        <!--success: function(){alert('DONE!');},-->
+        <!--error:function(){alert('ERROR!');},-->
+      });
+
+        $(function(){
+            $("#soon").fadeIn(1000);
+        });
+
+      }else{
+        distance--;
+      }
+    }, 1000);
+</script>
+    <script>
+        $(function(){
+            $("#soon").hide();
+        });
+
+    </script>
 </head>
 <style>
 body  {
@@ -18,7 +68,7 @@ body  {
 }
 </style>
 <style>
-div {
+.slot {
     position:absolute;
     left: 100px;
     top: 150px;
@@ -32,18 +82,36 @@ div {
 }
 </style>
 
+        <!--'auction1' : AuctionSlot1,-->
+        <!--'auction2' : AuctionSlot2,-->
+        <!--'auction3' : AuctionSlot3,-->
 <body>
-<div>
-    <img src='{% static "images/bg2.jpg" %}'  height="200" width="200"/> <br>
-    <font size = "6">Name: </font><br>
-    <font size = "6">PRICE: </font>    <br>
-    <font size = "6">LEAD: </font> <br>
-    <font size = "6"># Participants  </font><br>
-    <font size = "6">BID: </font>  <br>
-</div>
-<div style="left: 675px;"> same</div>
-<div style="left: 1200px;"> same</div>
+
+{% if auction1.isOpen == True %}
+    <div class="slot" id ="a1">
+        <img src= "{{auction1.animal.url}}"  height="200" width="200"/> <br>
+        <font size = "6">Name: {{auction1.animal.animal_ID}} </font><br>
+        <font size = "6">PRICE: {{auction1.total}} </font>    <br>
+        <font size = "6">LEAD: </font> <br>
+        <font size = "6"># Participants  </font><br>
+        <font size = "6">BID: </font>  <br>
+        <form action="." method = "POST">
+            {% csrf_token %}
+            <input type=text" name = "amount" value="{{F}}" />
+            <input type="submit" value = "submit">
+        </form>
+
+        <p id="demo"></p>
+    </div>
+{% endif %}
+<div id= "soon" style="padding-top: 240px ;padding-right: 25px;padding-bottom: 240px;padding-left:25px;"><font size = "6">Coming Soon</font></div>
+
+<div class="slot" style="left: 675px;"> same</div>
+<div class="slot" style="left: 1200px;"> same</div>
 <h1>Auction Page</h1>
+<div id="home" class="cart" style="position:absolute;left: 1600px;top: 50px;">
+    <a href="{% url 'game-home' %}"><img src='{% static "images/home.png" %}'  height="50" width="50"/> </a>
+</div>
 </body>
 
 

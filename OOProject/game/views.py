@@ -6,9 +6,15 @@ from .user import *
 from .ItemSet import *
 from .Main_Screen import *
 from .Animal_Book import *
+from .AuctionBase import *
+from .BackgroundSet import *
+from .Shop import *
 
-user = User()
-itemset = ItemSet
+user = User.get_instance()
+itemset = ItemSet()
+auctionPlace = AuctionBase()
+backgroundSet = BackgroundSet()
+shop1 = Shop()
 
 def main(request):  # handle traffic of blog
     # if request.method == 'POST':
@@ -24,7 +30,7 @@ def about(request):
 
 
 def home(request):
-    user.update_gold()
+    #user.update_gold()
     print("hello")
     context = {
         'gold': user.gold,
@@ -34,26 +40,92 @@ def home(request):
 
 
 def auction(request):
-    return render(request, 'game/auction.html', {'title': 'auction'})
+    a1 =AuctionSlot1.get_instance()
+    auction = {
+
+        'auction1': a1,
+        'auction2': AuctionSlot2.animal,
+        'auction3': AuctionSlot3.animal,
+
+    }
+    if request.method == "POST":
+        print("HELLO!!")
+        amount = request.POST['amount']
+        print(type(amount))
+        a1.bid(amount)
+        return render(request, 'game/auction.html', auction)
+
+
+    return render(request, 'game/auction.html', auction)
 
 
 def book(request):
     ab = AnimalBook
-    animals = {'animals': ab.animalarray}
+    animals = {'animals': ab.animalarray,
+    }
     return render(request, 'game/book.html', animals)
 
 
 def inventory(request):
-    return render(request, 'game/inventory.html', {'title': 'inventory'})
+    if request.method == "POST":
+        print("HELLO!!")
+        #my_var = dict.get( key , default )
+        #amount = request.POST['animalname']
+        item = int(request.POST.get("itemname"))
+        for i in range (0, len(itemset.itemarray)):
+            #print(itemset.itemarray[i]['itemID'])
+            if itemset.itemarray[i]['itemID'] == item:
+                shop1.buyItem(item)
+
+        print(item)
+    userItems ={
+        # 'itemName' : user.ownItems['itemName'],
+        # 'url': user.ownItems['url'],
+        'items' : user.ownItems
+    }
+    return render(request, 'game/inventory.html', userItems)
 
 
 def shop(request):
 
-    everything = {'items' : itemset.itemarray}
+    everything = {'items' : itemset.itemarray,
+                  'backgrounds' : backgroundSet.backgroundarray}
 
     return render(request, 'game/shop.html', everything)
 
 
-def load(request):
-    return render(request, 'game/load.html', {'title': 'load'})
-# Create your views here.')
+def result(request):
+    print("result!")
+    a1 =AuctionSlot1.get_instance()
+    if a1.player_won():
+        user.ownAnimals.append(a1.animal)
+    #a1.auction_close()
+    auction = {
+
+        'auction1': a1,
+        'auction2': AuctionSlot2.animal,
+        'auction3': AuctionSlot3.animal,
+        'a1_result' : a1.player_won(),
+
+    }
+    return render(request,'game/auction.html',)
+
+# def buy(request):
+#     if request.method == "POST":
+#         print("HELLO!!")
+#         #my_var = dict.get( key , default )
+#         #amount = request.POST['animalname']
+#         item = int(request.POST.get("itemname"))
+#         for i in range (0, len(itemset.itemarray)):
+#             print(itemset.itemarray[i]['itemID'])
+#             if itemset.itemarray[i]['itemID'] == item:
+#                 print("buy item")
+#                 shop1.buyItem(item)
+#
+#         print(item)
+#     userItems ={
+#         # 'itemName' : user.ownItems['itemName'],
+#         # 'url': user.ownItems['url'],
+#         'items' : user.ownItems
+#     }
+#     return render(request, 'game/inventory.html', userItems)

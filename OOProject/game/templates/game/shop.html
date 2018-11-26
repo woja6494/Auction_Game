@@ -1,17 +1,74 @@
+{% load static %}
 
-
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+
+<title>Title</title>
 </head>
 <body>
+
 <h1>Shop Page</h1>
-{% for item in items %}
-    <p>{{item.itemName}}</p>
-    <p>{{item.itemType}}</p>
-    <p>{{item.price}}</p>
-{% endfor %}
+<div>
+  {% for item in items %}
+     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal-{{item.itemName}}"><img src= "{{item.url}}" height="200" width="200"/> </button>
+    <!-- Modal -->
+        <div class="modal fade" id="Modal-{{item.itemName}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">{{item.itemType}}</h5>
+              </div>
+              <div class="modal-body">
+                Price: {{item.price}} <br>
+                Do you want to buy this item?
+              </div>
+              <div class="modal-footer" id="{{item.itemName}}">
+                <form action="/inventory/" method = "POST">
+                    {% csrf_token %}
+                    <button id="yesbutton" type="submit" class="btn btn-primary" value="{{item.itemID}}" name="itemname">Yes</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-bottom: 16px">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+
+  {% for background in backgrounds %}
+     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal-{{background.bgName}}"><img src= "{{background.url}}" height="200" width="200"/> </button>
+    <!-- Modal -->
+        <div class="modal fade" id="Modal-{{background.bgName}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">{{background.bgName}}</h5>
+              </div>
+              <div class="modal-body">
+                Price: {{background.price}} <br>
+                Do you want to buy this item?
+              </div>
+              <div class="modal-footer">
+                <form action="/inventory/" method = "POST">
+                    {% csrf_token %}
+                    <button id="yesbutton" type="submit" class="btn btn-primary" value="{{background.itemID}}" name="itemname">Yes</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-bottom: 16px">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="cart" style="position:absolute;left: 1600px;top: 50px;">
+    <a href="{% url 'game-home' %}"><img src='{% static "images/home.png" %}'  height="50" width="50"/> </a>
+</div>
+
 </body>
 </html>

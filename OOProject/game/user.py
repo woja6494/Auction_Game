@@ -1,17 +1,17 @@
 import time
 from django.views import generic
 from django import template
-
+from .ItemSet import *
 register = template.Library()
 
 class User:
     gold = 10000
     goldIncrease = True
     ownAnimals = []
-    ownItems = []
+    ownItems = [ItemSet.itemarray[0],ItemSet.itemarray[1]]
     ownBackground = []
+
     instance = None
-    temp = "striiiiing"
     # if goldIncrease:
     #     gold += 1
     #     time.sleep(1)

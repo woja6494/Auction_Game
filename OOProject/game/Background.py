@@ -9,14 +9,15 @@ class BackGround:
     price = 0
     itemSlots = [(448, 124)]# pixel of item slot
     animalSlot = [(823, 578)]
-
-    def __init__(self,bg_id, islot_num, aslot_num, price, itemSlots, animalSlots):
+    url = ""
+    def __init__(self,bg_id, islot_num, aslot_num, price, itemSlots, animalSlots,url):
         self.backgroundID = bg_id
         self.itemSlot_Number = islot_num
         self.animalSlot_Number = aslot_num
         self.price = price
         self.itemSlots = itemSlots
         self.animalSlot = animalSlots
+        self.url = url
 
 
     def get_Background(self):

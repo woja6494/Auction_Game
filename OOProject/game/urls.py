@@ -9,10 +9,11 @@ urlpatterns = [
     #  views.home navigates to views.py file and find home def.
     path('about/', views.about, name = 'game-about'),
     path('home/', views.home, name='game-home'),
-    path('load/', views.load, name='game-load'),
+    #path('load/', views.load, name='game-load'),
     path('auction/', views.auction, name='game-auction'),
     path('book/', views.book, name='game-book'),
     path('inventory/', views.inventory, name='game-inventory'),
     path('shop/', views.shop, name='game-shop'),
-
+    path('result/', views.result, name='game-result'),
+    #path('buy/', views.buy, name='game-buy')
 ]
