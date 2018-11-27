@@ -1,29 +1,32 @@
 from threading import Timer
-from .Auction import *
-
-class AuctionSlot:
+from abc import ABC, abstractmethod
+from .Animal import *
+from .user import *
+class AuctionSlot(ABC):
 
     auctionID = 0
     downTime = 0
-    runTime = 0
-    animal = None
+    runTime = 10
+    total = 0
+    AI_total = 0
+    isOpen = False
+    animal = Animal(0,"empty desc",0,"")
     instance = None
-
-    def __init__(self,auctionID, animal):
-        #self.runTime = Timer(runtime,self.winAuction())
-        self.auctionID = auctionID
-        #self.runTime.start()
-        self.animal  = animal;
+    user = User.get_instance()
 
 
 
-    def end_auction(self):
-        self.downTime = Timer(60, Auction.create_auction(self.AuctionID,500))
+    def player_won(self):
+        if self.total > self.AI_total:
+            print(self.total)
+            self.user.gold = self.user.gold -self.total
+            return True
+        else:
+            return False
 
+    def auction_close(self):
+        print("Closing Auction")
+        self.isOpen = False
 
-    #
-    # def winAuction(self, currentPrice):
-    #     if self.bid_player > currentPrice:
-    #         #put animal in players bag
-    #     else:
-    #         #nothing happen
+    def bid(self, amount):
+        self.total += int(amount)

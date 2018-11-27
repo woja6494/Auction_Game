@@ -110,7 +110,7 @@ def result(request): #from auction end
     if a1.player_won():
         print("Player won!")
         user.ownAnimals.append(a1.animal)
-    #a1.auction_close()
+    a1.auction_close()
     auction = {
 
         'auction1': a1,

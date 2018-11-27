@@ -1,8 +1,8 @@
-from .Auction import *
+from .AuctionFactory import *
 
 
 class AuctionBase:
-    auction = Auction()
+    auction = AuctionFactory()
     if AuctionSlot1.instance is None:
         auction.create_auction(1)
         # print("Auction 1 instance")

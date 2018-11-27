@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'bootstrap_modal_forms',
-    'game.Auction',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

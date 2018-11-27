@@ -1,7 +1,9 @@
 from threading import Timer
-from .Auction import *
 from .user import *
-class AuctionSlot1:
+from abc import ABC, abstractmethod
+from .AuctionSlot import *
+from .Animal import *
+class AuctionSlot1(AuctionSlot):
 
     auctionID = 0
     downTime = 0
@@ -12,6 +14,7 @@ class AuctionSlot1:
     animal = Animal(0,"empty desc",0,"")
     instance = None
     user = User.get_instance()
+
     @staticmethod
     def get_instance():
         if AuctionSlot1.instance is None:
@@ -32,22 +35,6 @@ class AuctionSlot1:
 
             AuctionSlot1.instance = self
 
-
-    def changeAninmal(self,animal):
-        self.animal = animal
-
-    def end_auction(self):
-        t = Timer(self.runTime,self.auction_close)
-        t.start()
-
-    def getAnimal(self):
-        return self.animal
-
-    # def winAuction(self, currentPrice):
-    #     if self.bid_player > currentPrice:
-    #         #put animal in players bag
-    #     else:
-    #         #nothing happen
     def player_won(self):
         if self.total > self.AI_total:
             print(self.total)
@@ -59,6 +46,7 @@ class AuctionSlot1:
     def auction_close(self):
         print("Closing Auction")
         self.isOpen = False
+        self.instance = None
 
     def bid(self, amount):
         self.total += int(amount)
