@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'game.apps.GameConfig',  #game app config
-    'game.Main_Screen',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,7 +69,6 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries':{
-                'Main_Screen': 'game.Main_Screen',
                 'user': 'game.user',
             }
         },

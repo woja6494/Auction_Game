@@ -5,11 +5,7 @@ class BackgroundSet:
 
     backgroundList = {}
     backgroundarray =[]
-    backgroundNumber = 0
-    itemSlot_Number = 0
-    price = 0
-    itemSlotPosition = 1
-    animalSlot_Number = 1
+
     instance = None
 
     @staticmethod

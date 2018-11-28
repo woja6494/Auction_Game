@@ -4,7 +4,6 @@ from django.http import HttpRequest
 from .models import *
 from .user import *
 from .ItemSet import *
-from .Main_Screen import *
 from .Animal_Book import *
 from .AuctionBase import *
 from .BackgroundSet import *
@@ -17,9 +16,6 @@ backgroundSet = BackgroundSet()
 shop1 = Shop()
 
 def main(request):  # handle traffic of blog
-    # if request.method == 'POST':
-    #     #start = request.POST['start']
-    #return HttpResponse(request, render(request, 'game/main.html', {'title': 'Main'}))
     return render(request, 'game/main.html', {'title': 'Main'})
     # request, template name what want to render,
     # third passes into template and access it on template

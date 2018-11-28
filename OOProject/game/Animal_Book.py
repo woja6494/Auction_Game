@@ -5,7 +5,6 @@ class AnimalBook:
 
     animalList = {}
     animalarray = []
-    #Listunlock = []
     animalkey = ["Cat","Macaque","Corgi","Chihuahua","Squirrel","Whitehorse"]
     instance = None
 

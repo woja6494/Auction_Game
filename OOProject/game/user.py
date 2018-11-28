@@ -6,15 +6,10 @@ register = template.Library()
 
 class User:
     gold = 10000
-    goldIncrease = True
     ownAnimals = []
     ownItems = [ItemSet.itemarray[0],ItemSet.itemarray[1]]
     ownBackground = []
-
     instance = None
-    # if goldIncrease:
-    #     gold += 1
-    #     time.sleep(1)
 
     @staticmethod
     def get_instance():
@@ -30,23 +25,6 @@ class User:
             User.instance = self
 
 
-    def getOwnAnimal(self, animal):
-        if animal in self.ownAnimals:
-            return True
-        else:
-            return False
-
-    def getOwnItem(self,item):
-        if item in self.ownItems:
-            return True
-        else:
-            return False
-
-    def getOwnBackground(self, background):
-        if background in self.ownBackground:
-            return True
-        else:
-            return False
 
     def update_gold(self):
         self.gold += 100

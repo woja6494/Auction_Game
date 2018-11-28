@@ -6,8 +6,6 @@ from .Animal import *
 class AuctionSlot1(AuctionSlot):
 
     auctionID = 0
-    downTime = 0
-    runTime = 10
     total = 0
     AI_total = 0
     isOpen = False
@@ -27,7 +25,6 @@ class AuctionSlot1(AuctionSlot):
             raise Exception("This class is a singleton!")
         else:
             self.auctionID = auctionID
-            # self.runTime.start()
             self.animal = animal;
             self.isOpen = True
             self.total = self.animal.price
@@ -45,7 +42,7 @@ class AuctionSlot1(AuctionSlot):
 
     def auction_close(self):
         print("Closing Auction")
-        self.isOpen = False
+        #self.isOpen = False
         self.instance = None
 
     def bid(self, amount):

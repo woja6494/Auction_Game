@@ -15,17 +15,17 @@ class PlayerHome:
     ItemSlotsOccupied = [False for i in itemSlots ]
     AnimalSlotsOccupied = [False for i in animalSlot]
 
-    def placeItem(self,item,):
-        if self.curr_item_num < self.max_item and self.user.getOwnItem(item):
+    #def placeItem(self,item,):
+        #if self.curr_item_num < self.max_item and self.user.getOwnItem(item):
             #place it
 
     def placeBackground(self, background,):
         if self.user.getOwnBackground(background):
             self.curr_background = background
 
-    def placeAnimal(self,animal,):
-        if self.curr_animal_num < self.max_item and self.user.getOwnAnima(animal):
-            #place it somehow
+    #def placeAnimal(self,animal,):
+        #if self.curr_animal_num < self.max_item and self.user.getOwnAnima(animal):
+            #
 
 
 

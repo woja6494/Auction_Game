@@ -5,7 +5,6 @@ class Animal:
 
     animal_ID = 0
     description = ""
-    unlocked = False
     rarity = ""
     url = None
 
@@ -18,8 +17,6 @@ class Animal:
     def get_Animal(self):
         return self.animal_ID
 
-    def is_Unlocked(self):
-        return self.unlocked
 
     def get_Description(self):
         return self.description

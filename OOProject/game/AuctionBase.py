@@ -8,3 +8,4 @@ class AuctionBase:
         # print("Auction 1 instance")
         # print(AuctionSlot1.get_instance)
         # print(AuctionSlot1.animal.animal_ID)
+
