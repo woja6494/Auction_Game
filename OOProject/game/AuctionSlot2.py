@@ -3,7 +3,7 @@ from .AuctionSlot import *
 from .Animal import *
 from abc import ABC, abstractmethod
 
-class AuctionSlot2:
+class AuctionSlot2(AuctionSlot):
 
     auctionID = 0
     downTime = 0
